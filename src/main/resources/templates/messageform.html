@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <body>
-<form action="#" th:action="@{/process}" th:object="${message}" method="post" enctype="multipart/form-data">
+<form action="#" class="form-horizontal" th:action="@{/process}" th:object="${message}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}"/>
 <!--    Content input field-->
     <div class="input-group mb-3 input-group-lg">
@@ -18,7 +18,7 @@
           th:errors="*{content}"></span><br/>
     </div>
 <!--    Date input field-->
-    <div class="input-group mb-3 input-group-lg">
+    <div class="input-group mb-3 input-group-lg , col-xs-3">
     <span class="input-group-text">Date</span>:<input type="text" th:field="*{date}" class="form-control" placeholder="Please enter today's date"/>
     <span th:if="${#fields.hasErrors('date')}"
           th:errors="*{date}"></span><br/>
@@ -31,6 +31,7 @@
         <input type="file" name="file" />
 <!--    Submit input field-->
     <input type="submit" value="Submit"/>
+
 </form>
 </body>
 </html>

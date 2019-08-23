@@ -48,12 +48,9 @@ public class HomeController {
 
     @PostMapping("/process")
     public String processAuthor(@Valid@ModelAttribute Message message,
-                                BindingResult result,
-                                @RequestParam("file") MultipartFile file) {
-        if (result.hasErrors()){
-            return "messageform";
-        }
-        else if (file.isEmpty()) {
+                                @RequestParam("file") MultipartFile file,
+                                BindingResult result) {
+        if (file.isEmpty()) {
             return "messageform";
         }
         try {
@@ -64,6 +61,9 @@ public class HomeController {
         } catch (IOException e) {
             e.printStackTrace();
             return "redirect:/add";
+        }
+        if (result.hasErrors()){
+            return "messageform";
         }
         return "redirect:/";
     }
@@ -90,6 +90,7 @@ public class HomeController {
         model.addAttribute("message", messageRepository.findById(id).get());
         return "messageform";
     }
+
     @RequestMapping("/delete/{id}")
     public String delMessage(@PathVariable("id") long id){
         messageRepository.deleteById(id);
