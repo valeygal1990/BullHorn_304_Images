@@ -9,6 +9,9 @@
 Content :<span th:text="${message.content}"></span><br />
 Date :<span th:text="${message.date}"></span><br />
 Sent By :<span th:text="${message.sentby}"></span><br />
-<a th:href="@{/delete/{id}(id=${message.id})}">Delete this course</a>
+<td><div th:if="${message.image} != null">
+    <img th:src="${message.image}" /></div></td>
+<td>
+<a th:href="@{/delete/{id}(id=${message.id})}">Delete this</a>
 </body>
 </html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">Add an author</a>
+<div th:each="author : ${authors}">
+    <div th:if="${author.headshot} != null">
+        <img th:src="${author.headshot}" />
+        <hr />
+    </div>
+    <h3 th:text="${author.name}"></h3>
+    <h4 th:text="${author.realname}"></h4>
+</div>
+</body>
+</html>

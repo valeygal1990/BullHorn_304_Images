@@ -17,11 +17,16 @@
         <td th:text="${message.content}"></td>
         <td th:text="${message.date}"></td>
         <td th:text="${message.sentby}"></td>
+        <td><div th:if="${message.image} != null">
+            <img th:src="${message.image}" /></div></td>
         <td>
             <a th:href="@{/update/{id}(id=${message.id})}"> </a>
             <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>
             <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
         </td></tr>
+<!--    <div th:each="message : ${messages}">-->
+<!--        <img th:src="${message.image}"/>-->
+<!--    </div>-->
 </table>
 </body>
 </html>
